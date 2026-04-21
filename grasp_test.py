@@ -48,6 +48,7 @@ end = piper.GetArmEndPoseMsgs()
 # piper.ModeCtrl(0x01, 0x00, 50, 0x00)
 # piper.EndPoseCtrl(300000,100000,300000,0,90000,0)
 camx, camy, camz = oakp.main()
+camz-=0.005
 print(f"x:{camx}, y:{camy}, z:{camz}")
 print(end)
 
@@ -82,5 +83,18 @@ z_final = int(target_base[2])
 
 print(target_base)
 
-# piper.ModeCtrl(0x01, 0x00, 30, 0x00)
-# piper.EndPoseCtrl(x_final,y_final,z_final,0,84999,0)
+piper.ModeCtrl(0x01, 0x00, 30, 0x00)
+piper.EndPoseCtrl(x_final,y_final,z_final,0,84999,0)
+
+# time.sleep(5)
+# piper.GripperCtrl(
+#     gripper_angle=100000,   # max opening (~100 mm depending on config)
+#     gripper_effort=1000,    # moderate force
+#     gripper_code=0x01       # enable gripper
+# )
+# time.sleep(5)
+# piper.GripperCtrl(
+#     gripper_angle=0,      # fully closed
+#     gripper_effort=2000,  # stronger grip
+#     gripper_code=0x01     # enable gripper
+# )

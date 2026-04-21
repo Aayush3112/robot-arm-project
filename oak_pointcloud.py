@@ -232,7 +232,7 @@ def compute_xyz_from_disparity(corners, disparity, projection_matrix, smoothed, 
         alpha = 0.35
         x = alpha * x + (1.0 - alpha) * prev[0]
         y = alpha * y + (1.0 - alpha) * prev[1]
-        z = alpha * z + (1.0 - alpha) * prev[2]
+        z = alpha * z + (1.0 - alpha) * prev[2] + 0.010
 
     smoothed[tag_id] = (x, y, z)
     return x, y, z, disparity_px
